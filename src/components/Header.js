@@ -9,7 +9,7 @@ const Header = () => {
 
   const navigation = [
     { name: 'Home', href: '/', icon: User },
-    { name: 'Articles', href: '/articles', icon: BookOpen },
+    { name: 'Projects', href: '/articles', icon: BookOpen },
     { name: 'Portfolio', href: '/portfolio', icon: Code },
     { name: 'Resume', href: '/resume', icon: FileText },
     { name: 'Contact', href: '/contact', icon: Mail },
@@ -23,10 +23,10 @@ const Header = () => {
         {/* Logo/Brand */}
         <div className="header-brand">
           <Link to="/" className="brand-link">
-            <div className="brand-icon">📊</div>
+            <div className="brand-icon">🌍</div>
             <div className="brand-text">
-              <h1 className="brand-name">Vincent Alulu</h1>
-              <p className="brand-subtitle">Economist & Data Scientist</p>
+              <h1 className="brand-name">Arial Rosario</h1>
+              <p className="brand-subtitle">International Relations Specialist</p>
             </div>
           </Link>
         </div>

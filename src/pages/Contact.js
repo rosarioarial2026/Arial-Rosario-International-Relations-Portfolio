@@ -58,7 +58,7 @@ const Contact = () => {
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem' }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-          <h1 style={{ fontSize: '3rem', fontWeight: '700', color: '#2c3e50', marginBottom: '0.5rem' }}>Get In Touch</h1>
+          <h1 style={{ fontSize: '3rem', fontWeight: '700', color: '#2c3e50', marginBottom: '0.5rem' }}>Contact Me</h1>
           <p style={{ fontSize: '1.1rem', color: '#666', maxWidth: '600px', margin: '0 auto', lineHeight: '1.6' }}>
             Interested in collaboration, consulting, or discussing research? I'd love to hear from you.
           </p>
