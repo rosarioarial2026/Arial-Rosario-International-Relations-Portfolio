@@ -14,31 +14,32 @@ code {
 }
 
 /* ============================================ */
-/* Professional-Casual Color Scheme */
+/* Professional-Casual Color Scheme - TEAL */
 /* Arial Rosario Portfolio */
 /* ============================================ */
 
 :root {
-  /* Primary Colors - Professional yet approachable */
-  --primary: #6366f1;           /* Indigo - main brand color */
-  --primary-dark: #4f46e5;      /* Darker indigo for hover */
-  --primary-light: #818cf8;     /* Light indigo for accents */
+  /* Primary Colors - Teal Gradient */
+  --primary: #3b9c9c;           /* Dark Teal - main brand color */
+  --primary-dark: #2d7a7a;      /* Darker teal for hover */
+  --primary-light: #5bb5b5;     /* Medium teal for accents */
+  --primary-lightest: #7dcdcd;  /* Light teal */
   
-  /* Secondary Colors - Warm and friendly */
-  --secondary: #ec4899;         /* Pink - creative accent */
-  --secondary-dark: #db2777;    /* Darker pink */
-  --secondary-light: #f472b6;   /* Light pink */
+  /* Secondary Colors - Complementary */
+  --secondary: #f59e0b;         /* Amber - warm accent */
+  --secondary-dark: #d97706;    /* Darker amber */
+  --secondary-light: #fbbf24;   /* Light amber */
   
   /* Accent Colors */
-  --accent-purple: #8b5cf6;     /* Violet accent */
-  --accent-teal: #14b8a6;       /* Teal for variety */
-  --accent-amber: #f59e0b;      /* Warm amber */
+  --accent-mint: #7dcdcd;       /* Mint accent */
+  --accent-coral: #ff7f7f;      /* Coral for variety */
+  --accent-sky: #60a5fa;        /* Sky blue */
   
   /* Status Colors */
   --success: #10b981;           /* Emerald green */
   --warning: #f59e0b;           /* Amber */
   --danger: #ef4444;            /* Red */
-  --info: #3b82f6;              /* Blue */
+  --info: #3b9c9c;              /* Teal */
   
   /* Neutral Colors */
   --text-dark: #1f2937;         /* Almost black for headings */
@@ -52,17 +53,18 @@ code {
   --bg-tertiary: #f3f4f6;       /* Light gray */
   --border: #e5e7eb;            /* Border gray */
   
-  /* Gradients - Modern and eye-catching */
-  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  --gradient-secondary: linear-gradient(135deg, #ec4899 0%, #f59e0b 100%);
-  --gradient-warm: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
-  --gradient-cool: linear-gradient(135deg, #3b82f6 0%, #14b8a6 100%);
+  /* Gradients - Teal theme */
+  --gradient-primary: linear-gradient(135deg, #3b9c9c 0%, #5bb5b5 50%, #7dcdcd 100%);
+  --gradient-secondary: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+  --gradient-cool: linear-gradient(135deg, #3b9c9c 0%, #60a5fa 100%);
+  --gradient-warm: linear-gradient(135deg, #5bb5b5 0%, #ff7f7f 100%);
   
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --shadow-teal: 0 4px 6px rgba(59, 156, 156, 0.3);
   
   /* Transitions */
   --transition-fast: 150ms ease;
@@ -108,12 +110,12 @@ a:hover {
 .btn-primary {
   background: var(--gradient-primary);
   color: white;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-teal);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 6px 12px rgba(59, 156, 156, 0.4);
 }
 
 .btn-secondary {

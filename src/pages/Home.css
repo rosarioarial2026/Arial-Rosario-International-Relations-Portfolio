@@ -498,31 +498,48 @@
 }
 
 /* Call to Action Section - Minimal Navy */
+/* CTA Section - Teal Gradient Theme */
 .cta-section {
-  padding: 4rem 0;
-  background: #2c5282;
-  color: white;
-  text-align: center;
+  background: linear-gradient(135deg, #3b9c9c 0%, #5bb5b5 50%, #7dcdcd 100%);
+  padding: 5rem 2rem;
+  margin-top: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+  z-index: 0;
 }
 
 .cta-content {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .cta-title {
-  font-size: 2.2rem;
-  font-weight: 300;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
   margin-bottom: 1rem;
-  letter-spacing: -0.01em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .cta-description {
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.95);
   margin-bottom: 2rem;
-  opacity: 0.9;
-  font-weight: 400;
+  line-height: 1.6;
 }
 
 .cta-actions {
@@ -532,15 +549,68 @@
   flex-wrap: wrap;
 }
 
+/* Button Styles */
+.btn {
+  padding: 0.875rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: white;
+  color: #3b9c9c;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
 .btn-outline {
   background: transparent;
   color: white;
-  border-color: rgba(255, 255, 255, 0.4);
+  border: 2px solid white;
 }
 
 .btn-outline:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.6);
+  background: white;
+  color: #3b9c9c;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .cta-title {
+    font-size: 2rem;
+  }
+
+  .cta-description {
+    font-size: 1rem;
+  }
+
+  .cta-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* Animations */

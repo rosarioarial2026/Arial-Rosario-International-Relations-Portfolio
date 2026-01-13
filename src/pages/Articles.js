@@ -1,5 +1,5 @@
 // src/pages/Articles.js
-// UPDATED: Supabase integration while preserving your UI
+// UPDATED: Supabase integration with research_articles table
 import React, { useState, useEffect } from 'react';
 import { Search, Filter, ExternalLink, Github, Database, FileText, Eye, Download } from 'lucide-react';
 import { articlesAPI } from '../lib/supabase';
@@ -27,8 +27,8 @@ const Articles = () => {
       console.log('Fetching articles from Supabase...');
       setLoading(true);
       
-      // Fetch all articles from Supabase
-      const { articles: data } = await articlesAPI.getAll();
+      // Fetch all articles from Supabase (now using research_articles table)
+      const data = await articlesAPI.getAll();
       
       console.log('Articles response:', data);
       
@@ -57,7 +57,11 @@ const Articles = () => {
                            (article.tags && article.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase())));
       
       const matchesType = filterType === 'all' || article.type === filterType;
-      const matchesYear = filterYear === 'all' || article.publication?.year?.toString() === filterYear;
+      
+      // Extract year from publication object or publication_date
+      const articleYear = article.publication?.year || 
+                         (article.publication_date ? new Date(article.publication_date).getFullYear() : null);
+      const matchesYear = filterYear === 'all' || articleYear?.toString() === filterYear;
       
       return matchesSearch && matchesType && matchesYear;
     });
@@ -69,7 +73,10 @@ const Articles = () => {
     if (!Array.isArray(articles) || articles.length === 0) {
       return [];
     }
-    const years = [...new Set(articles.map(article => article.publication?.year).filter(year => year))];
+    const years = [...new Set(articles.map(article => {
+      return article.publication?.year || 
+             (article.publication_date ? new Date(article.publication_date).getFullYear() : null);
+    }).filter(year => year))];
     return years.sort((a, b) => b - a);
   };
 
@@ -82,24 +89,15 @@ const Articles = () => {
     }
   };
 
-  const getStatusBadgeClass = (status) => {
-    if (!status) return 'status-default';
-    switch(status) {
-      case 'published': return 'status-published';
-      case 'under_review': return 'status-under-review';
-      case 'working_paper': return 'status-working-paper';
-      default: return 'status-default';
-    }
+  const getTypeBadgeClass = (type) => {
+    if (!type) return 'type-default';
+    return `type-${type.replace('_', '-')}`;
   };
 
-  const formatStatus = (status) => {
-    if (!status) return 'Unknown';
-    switch(status) {
-      case 'under_review': return 'Under Review';
-      case 'working_paper': return 'Working Paper';
-      case 'published': return 'Published';
-      default: return status.charAt(0).toUpperCase() + status.slice(1);
-    }
+  const formatType = (type) => {
+    if (!type) return 'Article';
+    // Convert snake_case to Title Case
+    return type.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   };
 
   if (loading) {
@@ -138,7 +136,7 @@ const Articles = () => {
         <div className="page-header">
           <h1 className="page-title">Research & Publications</h1>
           <p className="page-subtitle">
-            Exploring development economics, data science, and policy analysis
+            Academic work in international relations, policy analysis, and global affairs
           </p>
         </div>
 
@@ -148,7 +146,7 @@ const Articles = () => {
             <Search className="search-icon" size={20} />
             <input
               type="text"
-              placeholder="Search articles, topics, or keywords..."
+              placeholder="Search articles,key words"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="search-input"
@@ -164,11 +162,12 @@ const Articles = () => {
                 className="filter-select"
               >
                 <option value="all">All Types</option>
-                <option value="journal_article">Journal Articles</option>
+                <option value="research_paper">Research Papers</option>
+                <option value="policy_brief">Policy Briefs</option>
                 <option value="working_paper">Working Papers</option>
-                <option value="blog_post">Blog Posts</option>
-                <option value="conference_paper">Conference Papers</option>
-                <option value="academic_work">Academic Work</option>
+                <option value="conference_presentation">Conference Presentations</option>
+                <option value="report">Reports</option>
+                <option value="thesis">Thesis</option>
               </select>
             </div>
             
@@ -205,10 +204,13 @@ const Articles = () => {
                 {/* Article Header */}
                 <div className="article-header">
                   <div className="article-meta">
-                    <span className={`article-status ${getStatusBadgeClass(article.status)}`}>
-                      {formatStatus(article.status)}
+                    <span className={`article-type ${getTypeBadgeClass(article.type)}`}>
+                      {formatType(article.type)}
                     </span>
-                    <span className="article-year">{article.publication?.year || 'N/A'}</span>
+                    <span className="article-year">
+                      {article.publication?.year || 
+                       (article.publication_date ? new Date(article.publication_date).getFullYear() : 'N/A')}
+                    </span>
                     {article.featured && <span className="featured-badge">Featured</span>}
                   </div>
                   
@@ -232,27 +234,44 @@ const Articles = () => {
                 </h2>
 
                 {/* Authors */}
-                <div className="article-authors">
-                  {article.authors?.map((author, index) => (
-                    <span key={index} className="author">
-                      {author.name}
-                      {author.isMainAuthor && <span className="main-author-indicator">*</span>}
-                      {index < article.authors.length - 1 && ', '}
-                    </span>
-                  ))}
-                </div>
+                {article.authors && article.authors.length > 0 && (
+                  <div className="article-authors">
+                    {article.authors.map((author, index) => (
+                      <span key={index} className="author">
+                        {author.name || author}
+                        {author.affiliation && <span className="affiliation"> ({author.affiliation})</span>}
+                        {index < article.authors.length - 1 && ', '}
+                      </span>
+                    ))}
+                  </div>
+                )}
 
                 {/* Publication Info */}
-                {article.publication?.journal && (
+                {article.publication && (
                   <div className="publication-info">
-                    <strong>{article.publication.journal}</strong>
-                    {article.publication.volume && (
-                      <span>, Vol. {article.publication.volume}</span>
+                    {article.publication.journal && (
+                      <>
+                        <strong>{article.publication.journal}</strong>
+                        {article.publication.volume && (
+                          <span>, Vol. {article.publication.volume}</span>
+                        )}
+                        {article.publication.pages && (
+                          <span>, pp. {article.publication.pages}</span>
+                        )}
+                      </>
                     )}
-                    {article.publication.pages && (
-                      <span>, pp. {article.publication.pages}</span>
+                    {article.publication.conference && (
+                      <strong>{article.publication.conference}</strong>
                     )}
-                    <span> ({article.publication.year})</span>
+                    {article.publication.institution && (
+                      <strong>{article.publication.institution}</strong>
+                    )}
+                    {article.publication.year && (
+                      <span> ({article.publication.year})</span>
+                    )}
+                    {article.publication.location && (
+                      <span>, {article.publication.location}</span>
+                    )}
                   </div>
                 )}
 
@@ -263,6 +282,33 @@ const Articles = () => {
 
                 {/* Links Section */}
                 <div className="article-links">
+                  {/* PDF Link */}
+                  {article.pdf_url && (
+                    <a 
+                      href={article.pdf_url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="article-link pdf-link"
+                      onClick={() => articlesAPI.incrementDownloads(article.id)}
+                    >
+                      <FileText size={16} />
+                      Download PDF
+                    </a>
+                  )}
+                  
+                  {/* External Link */}
+                  {article.external_link && (
+                    <a 
+                      href={article.external_link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="article-link external-link"
+                    >
+                      <ExternalLink size={16} />
+                      View Publication
+                    </a>
+                  )}
+                  
                   {/* Main Publication Link */}
                   {article.publication?.url && (
                     <a 
@@ -285,24 +331,9 @@ const Articles = () => {
                       className="article-link doi-link"
                     >
                       <ExternalLink size={16} />
-                      DOI: {article.publication.doi}
+                      DOI
                     </a>
                   )}
-
-                  {/* Additional Links */}
-                  {article.links && article.links.map((link, index) => (
-                    <a 
-                      key={index}
-                      href={link.url} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className={`article-link ${link.type}-link`}
-                      title={link.description}
-                    >
-                      {getLinkIcon(link.type)}
-                      {link.description}
-                    </a>
-                  ))}
                 </div>
 
                 {/* Tags */}

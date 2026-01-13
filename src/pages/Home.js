@@ -76,7 +76,6 @@ const Home = () => {
             <div className="hero-text-section">
               <div className="hero-text">
                 <h1 className="hero-title">
-                  <span className="hero-greeting">Hello, I'm</span>
                   <span className="hero-name">Arial Rosario</span>
                   <span className="hero-role">International Relations Specialist</span>
                 </h1>

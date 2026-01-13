@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Mail, BookOpen } from 'lucide-react';
+import { Github, Linkedin, Mail, Globe } from 'lucide-react';
 import './Footer.css';
 
 const Footer = () => {
@@ -9,26 +9,26 @@ const Footer = () => {
     {
       name: 'Email',
       icon: Mail,
-      href: 'mailto:your.email@university.edu',
-      color: '#EA4335'
+      href: 'mailto:arrosario@ucsd.edu',
+      color: '#3b9c9c'
     },
     {
       name: 'LinkedIn',
       icon: Linkedin,
-      href: 'https://linkedin.com/in/yourprofile',
-      color: '#0077B5'
+      href: 'https://www.linkedin.com/in/arialrosario/',
+      color: '#5bb5b5'
     },
     {
       name: 'GitHub',
       icon: Github,
-      href: 'https://github.com/yourusername',
-      color: '#333'
+      href: 'https://github.com/rosarioarial2026/',
+      color: '#7dcdcd'
     },
     {
-      name: 'Google Scholar',
-      icon: BookOpen,
-      href: 'https://scholar.google.com/citations?user=yourid',
-      color: '#4285F4'
+      name: 'Blog',
+      icon: Globe,
+      href: '/blogs',
+      color: '#3b9c9c'
     }
   ];
 
@@ -40,8 +40,8 @@ const Footer = () => {
           <div className="footer-section">
             <h3 className="footer-title">About</h3>
             <p className="footer-text">
-              Economist and data scientist specializing in development economics, 
-              econometrics, and statistical analysis using R, Stata, and Python.
+              International Relations Specialist passionate about global diplomacy, 
+              cross-cultural communication, and telling authentic stories from around the world.
             </p>
           </div>
 
@@ -49,21 +49,21 @@ const Footer = () => {
           <div className="footer-section">
             <h3 className="footer-title">Quick Links</h3>
             <ul className="footer-links">
-              <li><a href="/articles">Research Articles</a></li>
-              <li><a href="/portfolio">Programming Portfolio</a></li>
-              <li><a href="/resume">Resume & CV</a></li>
+              <li><a href="/articles">Research & Projects</a></li>
+              <li><a href="/blogs">Travel Stories</a></li>
+              <li><a href="/resume">Resume</a></li>
               <li><a href="/contact">Contact</a></li>
             </ul>
           </div>
 
-          {/* Research Interests */}
+          {/* Areas of Focus */}
           <div className="footer-section">
-            <h3 className="footer-title">Research Interests</h3>
+            <h3 className="footer-title">Areas of Focus</h3>
             <ul className="footer-links">
-              <li>Development Economics</li>
-              <li>Data Science</li>
-              <li>Econometrics</li>
-              <li>Statistical Analysis</li>
+              <li>International Relations</li>
+              <li>Policy Analysis</li>
+              <li>Cultural Diplomacy</li>
+              <li>Travel & Storytelling</li>
             </ul>
           </div>
 
@@ -79,8 +79,8 @@ const Footer = () => {
                     href={link.href}
                     className="social-link"
                     aria-label={link.name}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target={link.href.startsWith('/') ? '_self' : '_blank'}
+                    rel={link.href.startsWith('/') ? '' : 'noopener noreferrer'}
                     style={{ '--hover-color': link.color }}
                   >
                     <Icon size={20} />
@@ -95,9 +95,9 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="footer-divider"></div>
           <div className="footer-copyright">
-            <p>© {currentYear} Vincent Alulu. All rights reserved.</p>
+            <p>© {currentYear} Arial Rosario. All rights reserved.</p>
             <p className="footer-built">
-              Built with React & Node.js | Academic Portfolio
+              International Relations Specialist | UC San Diego GPS
             </p>
           </div>
         </div>
