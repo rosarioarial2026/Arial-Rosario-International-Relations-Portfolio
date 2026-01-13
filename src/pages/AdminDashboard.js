@@ -9,8 +9,9 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
   const [blogs, setBlogs] = useState([]);
   const [comments, setComments] = useState([]);
+  const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('blogs'); // 'blogs' or 'comments'
+  const [activeTab, setActiveTab] = useState('blogs'); // 'blogs', 'research', or 'comments'
 
   useEffect(() => {
     checkAuth();
@@ -26,7 +27,7 @@ const AdminDashboard = () => {
 
   const loadData = async () => {
     setLoading(true);
-    await Promise.all([loadBlogs(), loadComments()]);
+    await Promise.all([loadBlogs(), loadComments(), loadArticles()]);
     setLoading(false);
   };
 
@@ -61,6 +62,20 @@ const AdminDashboard = () => {
       setComments(data || []);
     } catch (error) {
       console.error('Error loading comments:', error);
+    }
+  };
+
+  const loadArticles = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('research_articles')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+      setArticles(data || []);
+    } catch (error) {
+      console.error('Error loading articles:', error);
     }
   };
 
@@ -121,6 +136,39 @@ const AdminDashboard = () => {
     }
   };
 
+  const handleDeleteArticle = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this article?')) return;
+
+    try {
+      const { error } = await supabase
+        .from('research_articles')
+        .delete()
+        .eq('id', id);
+
+      if (error) throw error;
+      loadArticles();
+      alert('Article deleted successfully!');
+    } catch (error) {
+      console.error('Error deleting article:', error);
+      alert('Failed to delete article');
+    }
+  };
+
+  const handleTogglePublishArticle = async (id, currentStatus) => {
+    try {
+      const { error } = await supabase
+        .from('research_articles')
+        .update({ published: !currentStatus })
+        .eq('id', id);
+
+      if (error) throw error;
+      loadArticles();
+    } catch (error) {
+      console.error('Error updating article:', error);
+      alert('Failed to update article status');
+    }
+  };
+
   if (loading) {
     return (
       <div className="admin-dashboard">
@@ -139,10 +187,6 @@ const AdminDashboard = () => {
         <div className="admin-header-content">
           <h1>Admin Dashboard</h1>
           <div className="admin-actions">
-            <Link to="/admin/blog/new" className="btn btn-primary">
-              <Plus size={20} />
-              New Blog Post
-            </Link>
             <button onClick={handleLogout} className="btn btn-outline">
               <LogOut size={20} />
               Logout
@@ -160,6 +204,12 @@ const AdminDashboard = () => {
           Blog Posts ({blogs.length})
         </button>
         <button
+          className={`tab ${activeTab === 'research' ? 'active' : ''}`}
+          onClick={() => setActiveTab('research')}
+        >
+          Research Articles ({articles.length})
+        </button>
+        <button
           className={`tab ${activeTab === 'comments' ? 'active' : ''}`}
           onClick={() => setActiveTab('comments')}
         >
@@ -171,7 +221,13 @@ const AdminDashboard = () => {
       <div className="admin-content">
         {activeTab === 'blogs' && (
           <div className="blogs-section">
-            <h2>All Blog Posts</h2>
+            <div className="section-header">
+              <h2>All Blog Posts</h2>
+              <Link to="/admin/blog/new" className="btn btn-primary">
+                <Plus size={20} />
+                New Blog Post
+              </Link>
+            </div>
             <div className="blogs-table">
               {blogs.length === 0 ? (
                 <div className="empty-state">
@@ -220,6 +276,80 @@ const AdminDashboard = () => {
                           </Link>
                           <button
                             onClick={() => handleDeleteBlog(blog.id)}
+                            className="action-btn delete"
+                            title="Delete"
+                          >
+                            <Trash2 size={18} />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'research' && (
+          <div className="blogs-section">
+            <div className="section-header">
+              <h2>Research Articles</h2>
+              <Link to="/admin/research/new" className="btn btn-primary">
+                <Plus size={20} />
+                New Research Article
+              </Link>
+            </div>
+            <div className="blogs-table">
+              {articles.length === 0 ? (
+                <div className="empty-state">
+                  <p>No research articles yet. Create your first one!</p>
+                </div>
+              ) : (
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Type</th>
+                      <th>Status</th>
+                      <th>Views</th>
+                      <th>Created</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {articles.map((article) => (
+                      <tr key={article.id}>
+                        <td className="blog-title-cell">
+                          <Link to={`/articles`} target="_blank">
+                            {article.title}
+                          </Link>
+                        </td>
+                        <td style={{textTransform: 'capitalize'}}>
+                          {article.type ? article.type.replace(/_/g, ' ') : 'N/A'}
+                        </td>
+                        <td>
+                          <button
+                            className={`status-badge ${article.published ? 'published' : 'draft'}`}
+                            onClick={() => handleTogglePublishArticle(article.id, article.published)}
+                          >
+                            {article.published ? 'Published' : 'Draft'}
+                          </button>
+                        </td>
+                        <td>
+                          <Eye size={16} /> {article.views || 0}
+                        </td>
+                        <td>{new Date(article.created_at).toLocaleDateString()}</td>
+                        <td className="actions-cell">
+                          <Link
+                            to={`/admin/research/edit/${article.id}`}
+                            className="action-btn edit"
+                            title="Edit"
+                          >
+                            <Edit size={18} />
+                          </Link>
+                          <button
+                            onClick={() => handleDeleteArticle(article.id)}
                             className="action-btn delete"
                             title="Delete"
                           >

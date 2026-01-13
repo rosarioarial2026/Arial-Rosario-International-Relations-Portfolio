@@ -17,6 +17,7 @@ import Contact from './pages/Contact';
 import Login from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
 import BlogEditor from './pages/BlogEditor';
+import ResearchEditor from './pages/ResearchEditor';
 
 import './App.css';
 
@@ -50,6 +51,22 @@ function App() {
             element={
               <ProtectedRoute>
                 <BlogEditor />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/research/new"
+            element={
+              <ProtectedRoute>
+                <ResearchEditor />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/research/edit/:id"
+            element={
+              <ProtectedRoute>
+                <ResearchEditor />
               </ProtectedRoute>
             }
           />

@@ -1,0 +1,134 @@
+/* ResearchEditor.css - Teal themed research article editor */
+
+.research-editor {
+  min-height: 100vh;
+  background: #f9fafb;
+}
+
+/* Use same styles as BlogEditor */
+.research-editor .editor-header,
+.research-editor .editor-container,
+.research-editor .editor-main,
+.research-editor .editor-sidebar,
+.research-editor .form-group,
+.research-editor .input-large,
+.research-editor .input-medium,
+.research-editor .input-small,
+.research-editor .textarea,
+.research-editor .select,
+.research-editor .rich-editor-wrapper,
+.research-editor .sidebar-section,
+.research-editor .tag-input-form,
+.research-editor .btn-small,
+.research-editor .tags-list,
+.research-editor .tag,
+.research-editor .tag-remove,
+.research-editor .checkbox-label,
+.research-editor .btn,
+.research-editor .btn-primary,
+.research-editor .btn-outline,
+.research-editor .back-btn,
+.research-editor .editor-actions,
+.research-editor .loading-state,
+.research-editor .loading-spinner {
+  /* Inherit all styles from BlogEditor.css */
+}
+
+/* Import BlogEditor styles */
+@import './BlogEditor.css';
+
+/* Additional Research-specific styles */
+
+.author-input-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.authors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.author-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.author-item strong {
+  color: #1f2937;
+}
+
+.author-item span {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.remove-btn {
+  background: #fee2e2;
+  color: #991b1b;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.remove-btn:hover {
+  background: #ef4444;
+  color: white;
+}
+
+/* Override for research editor header */
+.research-editor .editor-header {
+  background: linear-gradient(135deg, #3b9c9c 0%, #5bb5b5 100%);
+  color: white;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.research-editor .editor-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.research-editor .back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.research-editor .back-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+  .author-input-form {
+    grid-template-columns: 1fr;
+  }
+}

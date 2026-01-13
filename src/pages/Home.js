@@ -54,7 +54,20 @@ const Home = () => {
   ];
 
   return (
-    <div className="home">
+    <div 
+      className="home"
+      style={{
+        // OPTION 1: Teal gradient (currently active)
+        //background: 'linear-gradient(135deg, #3b9c9c 0%, #5bb5b5 50%, #7dcdcd 100%)',
+        
+        // OPTION 2: Your background image (uncomment to use)
+        backgroundImage: 'url(/images/background.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-container">
