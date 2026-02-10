@@ -14,32 +14,33 @@ code {
 }
 
 /* ============================================ */
-/* Professional-Casual Color Scheme - TEAL */
-/* Arial Rosario Portfolio */
+/* Beach Wedding Color Scheme */
+/* Navy, Teal, Seafoam, Tangerine, Sand */
+/* Ariel Rosario Portfolio */
 /* ============================================ */
 
 :root {
-  /* Primary Colors - Teal Gradient */
-  --primary: #3b9c9c;           /* Dark Teal - main brand color */
-  --primary-dark: #2d7a7a;      /* Darker teal for hover */
-  --primary-light: #5bb5b5;     /* Medium teal for accents */
-  --primary-lightest: #7dcdcd;  /* Light teal */
+  /* Primary Colors - Beach Palette */
+  --primary: #2a9d8f;           /* Teal - main brand color */
+  --primary-dark: #238276;      /* Darker teal for hover */
+  --primary-light: #a8dadc;     /* Seafoam - light accent */
+  --primary-lightest: #d4f1f4;  /* Very light seafoam */
   
-  /* Secondary Colors - Complementary */
-  --secondary: #f59e0b;         /* Amber - warm accent */
-  --secondary-dark: #d97706;    /* Darker amber */
-  --secondary-light: #fbbf24;   /* Light amber */
+  /* Secondary Colors - Navy & Warm Accents */
+  --secondary: #3d5a80;         /* Navy - professional dark blue */
+  --secondary-dark: #2c4360;    /* Darker navy */
+  --secondary-light: #5c7a9e;   /* Light navy */
   
   /* Accent Colors */
-  --accent-mint: #7dcdcd;       /* Mint accent */
-  --accent-coral: #ff7f7f;      /* Coral for variety */
-  --accent-sky: #60a5fa;        /* Sky blue */
+  --accent-tangerine: #f4a261;  /* Tangerine - warm coral */
+  --accent-sand: #e9c46a;       /* Sand - warm yellow */
+  --accent-seafoam: #a8dadc;    /* Seafoam accent */
   
   /* Status Colors */
-  --success: #10b981;           /* Emerald green */
-  --warning: #f59e0b;           /* Amber */
-  --danger: #ef4444;            /* Red */
-  --info: #3b9c9c;              /* Teal */
+  --success: #2a9d8f;           /* Teal green */
+  --warning: #f4a261;           /* Tangerine */
+  --danger: #e76f51;            /* Coral red */
+  --info: #a8dadc;              /* Seafoam */
   
   /* Neutral Colors */
   --text-dark: #1f2937;         /* Almost black for headings */
@@ -53,18 +54,18 @@ code {
   --bg-tertiary: #f3f4f6;       /* Light gray */
   --border: #e5e7eb;            /* Border gray */
   
-  /* Gradients - Teal theme */
-  --gradient-primary: linear-gradient(135deg, #3b9c9c 0%, #5bb5b5 50%, #7dcdcd 100%);
-  --gradient-secondary: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
-  --gradient-cool: linear-gradient(135deg, #3b9c9c 0%, #60a5fa 100%);
-  --gradient-warm: linear-gradient(135deg, #5bb5b5 0%, #ff7f7f 100%);
+  /* Gradients - Beach theme */
+  --gradient-primary: linear-gradient(135deg, #2a9d8f 0%, #a8dadc 100%);
+  --gradient-secondary: linear-gradient(135deg, #3d5a80 0%, #5c7a9e 100%);
+  --gradient-warm: linear-gradient(135deg, #f4a261 0%, #e9c46a 100%);
+  --gradient-cool: linear-gradient(135deg, #2a9d8f 0%, #3d5a80 100%);
   
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  --shadow-teal: 0 4px 6px rgba(59, 156, 156, 0.3);
+  --shadow-teal: 0 4px 6px rgba(42, 157, 143, 0.3);
   
   /* Transitions */
   --transition-fast: 150ms ease;
@@ -115,7 +116,7 @@ a:hover {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(59, 156, 156, 0.4);
+  box-shadow: 0 6px 12px rgba(42, 157, 143, 0.4);
 }
 
 .btn-secondary {

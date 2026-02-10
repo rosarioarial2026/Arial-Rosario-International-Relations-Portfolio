@@ -73,7 +73,7 @@
 }
 
 .profile-image:hover {
-  border-color: #2c5282;
+  border-color: #3d5a80;
   box-shadow: 0 8px 24px rgba(44, 82, 130, 0.15);
 }
 
@@ -149,21 +149,21 @@
 }
 
 .btn-primary {
-  background: #2c5282;
+  background: #3d5a80;
   color: white;
-  border-color: #2c5282;
+  border-color: #3d5a80;
 }
 
 .btn-primary:hover {
-  background: #2a4a7a;
+  background: #2c4360;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(44, 82, 130, 0.15);
 }
 
 .btn-secondary {
   background: transparent;
-  color: #2c5282;
-  border-color: #2c5282;
+  color: #3d5a80;
+  border-color: #3d5a80;
 }
 
 .btn-secondary:hover {
@@ -198,7 +198,7 @@
 .stat-value {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #2c5282;
+  color: #3d5a80;
   line-height: 1;
 }
 
@@ -269,7 +269,7 @@
 
 .skill-percentage {
   font-weight: 500;
-  color: #2c5282;
+  color: #3d5a80;
   font-size: 0.9rem;
 }
 
@@ -282,7 +282,7 @@
 
 .skill-fill {
   height: 100%;
-  background: #2c5282;
+  background: #3d5a80;
   border-radius: 3px;
   animation: fillBar 1.5s ease-out forwards;
   transform: scaleX(0);
@@ -305,7 +305,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: #2c5282;
+  color: #3d5a80;
   text-decoration: none;
   font-weight: 500;
   font-size: 0.95rem;
@@ -314,7 +314,7 @@
 }
 
 .view-all-link:hover {
-  color: #2a4a7a;
+  color: #2c4360;
 }
 
 .articles-grid {
@@ -394,7 +394,7 @@
 }
 
 .article-title a:hover {
-  color: #2c5282;
+  color: #3d5a80;
 }
 
 .article-abstract {
@@ -432,7 +432,7 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  color: #2c5282;
+  color: #3d5a80;
   text-decoration: none;
   font-weight: 500;
   font-size: 0.9rem;
@@ -440,7 +440,7 @@
 }
 
 .read-more:hover {
-  color: #2a4a7a;
+  color: #2c4360;
 }
 
 /* Loading and Error States */
@@ -496,14 +496,14 @@
   width: 40px;
   height: 40px;
   border: 2px solid #f7fafc;
-  border-top: 2px solid #2c5282;
+  border-top: 2px solid #3d5a80;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 1rem;
 }
 
 .retry-btn {
-  background: #2c5282;
+  background: #3d5a80;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -514,13 +514,13 @@
 }
 
 .retry-btn:hover {
-  background: #2a4a7a;
+  background: #2c4360;
 }
 
 /* Call to Action Section - Minimal Navy */
 /* CTA Section - Teal Gradient Theme */
 .cta-section {
-  background: linear-gradient(135deg, #3b9c9c 0%, #5bb5b5 50%, #7dcdcd 100%);
+  background: linear-gradient(135deg, #2a9d8f 0%, #a8dadc 100%);
   padding: 5rem 2rem;
   margin-top: 4rem;
   position: relative;
@@ -586,7 +586,7 @@
 
 .btn-primary {
   background: white;
-  color: #3b9c9c;
+  color: #2a9d8f;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -604,7 +604,7 @@
 
 .btn-outline:hover {
   background: white;
-  color: #3b9c9c;
+  color: #2a9d8f;
   transform: translateY(-2px);
 }
 

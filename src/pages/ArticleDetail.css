@@ -19,7 +19,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: #2c5282;
+  color: #3d5a80;
   text-decoration: none;
   font-weight: 500;
   padding: 0.5rem 1rem;
@@ -113,7 +113,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #2c5282;
+  color: #3d5a80;
   margin-bottom: 1.5rem;
   font-size: 0.95rem;
 }
@@ -343,12 +343,12 @@
 }
 
 .article-link.primary {
-  background: #2c5282;
+  background: #3d5a80;
   color: white;
 }
 
 .article-link.primary:hover {
-  background: #2a4a7a;
+  background: #2c4360;
 }
 
 .article-link.doi {

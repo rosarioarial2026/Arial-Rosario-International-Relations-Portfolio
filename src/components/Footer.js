@@ -15,7 +15,7 @@ const Footer = () => {
     {
       name: 'LinkedIn',
       icon: Linkedin,
-      href: 'https://www.linkedin.com/in/arialrosario/',
+      href: 'https://www.linkedin.com/in/-ariel-rosario/',
       color: '#5bb5b5'
     },
     {
@@ -95,9 +95,9 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="footer-divider"></div>
           <div className="footer-copyright">
-            <p>© {currentYear} Arial Rosario. All rights reserved.</p>
+            <p>© {currentYear} Ariel Rosario. All rights reserved.</p>
             <p className="footer-built">
-              International Relations Specialist | UC San Diego GPS
+               International Relations & Global Environmental Governance | UC San Diego GPS
             </p>
           </div>
         </div>

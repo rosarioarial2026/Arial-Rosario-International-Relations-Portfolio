@@ -64,7 +64,7 @@
 
 .professional-title {
   font-size: 1.3rem;
-  color: #2c5282;
+  color: #3d5a80;
   font-weight: 500;
   margin-bottom: 1.5rem;
 }
@@ -95,7 +95,7 @@
   color: #1a202c;
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #2c5282;
+  border-bottom: 2px solid #3d5a80;
   letter-spacing: -0.01em;
 }
 
@@ -132,7 +132,7 @@
 
 .institution {
   margin: 0.25rem 0 0 0;
-  color: #2c5282;
+  color: #3d5a80;
   font-weight: 400;
   font-size: 0.95rem;
 }
@@ -187,7 +187,7 @@
 
 .company {
   margin: 0.25rem 0 0 0;
-  color: #2c5282;
+  color: #3d5a80;
   font-weight: 400;
   font-size: 0.95rem;
 }
@@ -214,7 +214,7 @@
 
 .job-responsibilities li:before {
   content: "•";
-  color: #2c5282;
+  color: #3d5a80;
   font-weight: bold;
   position: absolute;
   left: 0;
@@ -256,7 +256,7 @@
 }
 
 .research-tag {
-  background: #2c5282;
+  background: #3d5a80;
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 20px;
@@ -273,14 +273,14 @@
 }
 
 .articles-link {
-  color: #2c5282;
+  color: #3d5a80;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease;
 }
 
 .articles-link:hover {
-  color: #2a4a7a;
+  color: #2c4360;
   text-decoration: underline;
 }
 
@@ -290,7 +290,7 @@
 }
 
 .download-btn {
-  background: #2c5282;
+  background: #3d5a80;
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -306,7 +306,7 @@
 }
 
 .download-btn:hover {
-  background: #2a4a7a;
+  background: #2c4360;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(44, 82, 130, 0.15);
 }

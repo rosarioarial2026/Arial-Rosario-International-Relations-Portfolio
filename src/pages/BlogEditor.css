@@ -7,7 +7,7 @@
 
 /* Header */
 .editor-header {
-  background: linear-gradient(135deg, #3b9c9c 0%, #5bb5b5 100%);
+  background: linear-gradient(135deg, #2a9d8f 0%, #a8dadc 100%);
   color: white;
   padding: 1.5rem 2rem;
   display: flex;
@@ -123,7 +123,7 @@
 .input-small:focus,
 .textarea:focus,
 .select:focus {
-  border-color: #3b9c9c;
+  border-color: #2a9d8f;
   box-shadow: 0 0 0 3px rgba(59, 156, 156, 0.1);
 }
 
@@ -136,7 +136,7 @@
 }
 
 .rich-editor-wrapper:focus-within {
-  border-color: #3b9c9c;
+  border-color: #2a9d8f;
   box-shadow: 0 0 0 3px rgba(59, 156, 156, 0.1);
 }
 
@@ -181,12 +181,12 @@
 
 .rich-editor-wrapper .ql-toolbar button:hover .ql-stroke,
 .rich-editor-wrapper .ql-toolbar button.ql-active .ql-stroke {
-  stroke: #3b9c9c;
+  stroke: #2a9d8f;
 }
 
 .rich-editor-wrapper .ql-toolbar button:hover .ql-fill,
 .rich-editor-wrapper .ql-toolbar button.ql-active .ql-fill {
-  fill: #3b9c9c;
+  fill: #2a9d8f;
 }
 
 .rich-editor-wrapper .ql-toolbar button:hover,
@@ -233,7 +233,7 @@
 
 .btn-small {
   padding: 0.5rem 1rem;
-  background: #3b9c9c;
+  background: #2a9d8f;
   color: white;
   border: none;
   border-radius: 6px;
@@ -243,7 +243,7 @@
 }
 
 .btn-small:hover {
-  background: #2d7a7a;
+  background: #238276;
 }
 
 .tags-list {
@@ -256,7 +256,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: linear-gradient(135deg, #3b9c9c 0%, #5bb5b5 100%);
+  background: linear-gradient(135deg, #2a9d8f 0%, #a8dadc 100%);
   color: white;
   padding: 0.35rem 0.75rem;
   border-radius: 20px;
@@ -298,7 +298,7 @@
   width: 20px;
   height: 20px;
   cursor: pointer;
-  accent-color: #3b9c9c;
+  accent-color: #2a9d8f;
 }
 
 .checkbox-label span {
@@ -322,7 +322,7 @@
 
 .btn-primary {
   background: white;
-  color: #3b9c9c;
+  color: #2a9d8f;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -339,7 +339,7 @@
 
 .btn-outline:hover:not(:disabled) {
   background: white;
-  color: #3b9c9c;
+  color: #2a9d8f;
 }
 
 .btn:disabled {
@@ -361,7 +361,7 @@
   width: 50px;
   height: 50px;
   border: 4px solid #e5e7eb;
-  border-top-color: #3b9c9c;
+  border-top-color: #2a9d8f;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }

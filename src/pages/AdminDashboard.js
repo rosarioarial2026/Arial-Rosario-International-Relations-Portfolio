@@ -1,7 +1,7 @@
 // src/pages/AdminDashboard.js - Delete-only comments (no approval)
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Plus, Edit, Trash2, Eye, LogOut, MessageSquare } from 'lucide-react';
+import { Plus, Edit, Trash2, Eye, LogOut, MessageSquare, FileText } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import './AdminDashboard.css';
 
@@ -11,7 +11,7 @@ const AdminDashboard = () => {
   const [comments, setComments] = useState([]);
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('blogs'); // 'blogs', 'research', or 'comments'
+  const [activeTab, setActiveTab] = useState('blogs'); // 'blogs', 'research', 'comments', or 'resume'
 
   useEffect(() => {
     checkAuth();
@@ -215,6 +215,13 @@ const AdminDashboard = () => {
         >
           Comments ({comments.length})
         </button>
+        <button
+          className={`tab ${activeTab === 'resume' ? 'active' : ''}`}
+          onClick={() => setActiveTab('resume')}
+        >
+          <FileText size={18} />
+          Resume
+        </button>
       </div>
 
       {/* Content */}
@@ -400,6 +407,90 @@ const AdminDashboard = () => {
                   </div>
                 ))
               )}
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'resume' && (
+          <div className="blogs-section">
+            <div className="section-header">
+              <h2>Resume Management</h2>
+              <Link to="/admin/resume/edit" className="btn btn-primary">
+                <Edit size={20} />
+                Edit Resume
+              </Link>
+            </div>
+            <div className="resume-info-card">
+              <p style={{color: '#6b7280', marginBottom: '1.5rem'}}>
+                Manage your resume content through the editor. All changes appear instantly on your resume page.
+              </p>
+              
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                gap: '1rem',
+                marginTop: '1.5rem'
+              }}>
+                <div style={{
+                  background: '#f9fafb',
+                  padding: '1.5rem',
+                  borderRadius: '8px',
+                  border: '1px solid #e5e7eb'
+                }}>
+                  <h4 style={{margin: '0 0 0.5rem 0', color: '#1f2937'}}>Personal Info</h4>
+                  <p style={{margin: 0, color: '#6b7280', fontSize: '0.875rem'}}>
+                    Name, contact details, LinkedIn
+                  </p>
+                </div>
+
+                <div style={{
+                  background: '#f9fafb',
+                  padding: '1.5rem',
+                  borderRadius: '8px',
+                  border: '1px solid #e5e7eb'
+                }}>
+                  <h4 style={{margin: '0 0 0.5rem 0', color: '#1f2937'}}>Education</h4>
+                  <p style={{margin: 0, color: '#6b7280', fontSize: '0.875rem'}}>
+                    Degrees, institutions, dates
+                  </p>
+                </div>
+
+                <div style={{
+                  background: '#f9fafb',
+                  padding: '1.5rem',
+                  borderRadius: '8px',
+                  border: '1px solid #e5e7eb'
+                }}>
+                  <h4 style={{margin: '0 0 0.5rem 0', color: '#1f2937'}}>Experience</h4>
+                  <p style={{margin: 0, color: '#6b7280', fontSize: '0.875rem'}}>
+                    Jobs, responsibilities, achievements
+                  </p>
+                </div>
+
+                <div style={{
+                  background: '#f9fafb',
+                  padding: '1.5rem',
+                  borderRadius: '8px',
+                  border: '1px solid #e5e7eb'
+                }}>
+                  <h4 style={{margin: '0 0 0.5rem 0', color: '#1f2937'}}>Skills</h4>
+                  <p style={{margin: 0, color: '#6b7280', fontSize: '0.875rem'}}>
+                    Technical, languages, interests
+                  </p>
+                </div>
+              </div>
+
+              <div style={{
+                marginTop: '2rem',
+                padding: '1rem',
+                background: '#eff6ff',
+                border: '1px solid #bfdbfe',
+                borderRadius: '8px'
+              }}>
+                <p style={{margin: 0, color: '#1e40af', fontSize: '0.9rem'}}>
+                  💡 <strong>Tip:</strong> Keep your resume updated regularly. All changes sync instantly to your public resume page.
+                </p>
+              </div>
             </div>
           </div>
         )}

@@ -64,7 +64,7 @@ const Header = () => {
           <Link to="/" className="header-logo" onClick={closeMenu}>
             <span className="logo-icon">🌍</span>
             <div className="logo-text">
-              <h1>Arial Rosario</h1>
+              <h1>Ariel Rosario</h1>
               <p>International Relations Specialist</p>
             </div>
           </Link>

@@ -1,8 +1,83 @@
-import React from 'react';
-import { Download, Mail, Phone, MapPin, Calendar } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Download, Mail, Phone, MapPin, Calendar, Linkedin } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 import './Resume.css';
 
 const Resume = () => {
+  const [loading, setLoading] = useState(true);
+  const [personalInfo, setPersonalInfo] = useState(null);
+  const [education, setEducation] = useState([]);
+  const [experience, setExperience] = useState([]);
+  const [skills, setSkills] = useState([]);
+  const [interests, setInterests] = useState([]);
+
+  useEffect(() => {
+    loadResumeData();
+  }, []);
+
+  const loadResumeData = async () => {
+    try {
+      setLoading(true);
+
+      // Load personal info
+      const { data: infoData } = await supabase
+        .from('resume_info')
+        .select('*')
+        .single();
+      setPersonalInfo(infoData);
+
+      // Load education (ordered by display_order)
+      const { data: eduData } = await supabase
+        .from('resume_education')
+        .select('*')
+        .order('display_order', { ascending: true });
+      setEducation(eduData || []);
+
+      // Load experience (ordered by display_order)
+      const { data: expData } = await supabase
+        .from('resume_experience')
+        .select('*')
+        .order('display_order', { ascending: true });
+      setExperience(expData || []);
+
+      // Load skills
+      const { data: skillsData } = await supabase
+        .from('resume_skills')
+        .select('*')
+        .order('display_order');
+      setSkills(skillsData || []);
+
+      // Load interests
+      const { data: interestsData } = await supabase
+        .from('resume_interests')
+        .select('*')
+        .order('display_order');
+      setInterests(interestsData || []);
+
+    } catch (error) {
+      console.error('Error loading resume:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDownload = () => {
+    window.open('/documents/A_Rosario_Resume.pdf', '_blank');
+  };
+
+  if (loading) {
+    return (
+      <div className="resume-page">
+        <div className="resume-container">
+          <div className="loading-state">
+            <div className="loading-spinner"></div>
+            <p>Loading resume...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="resume-page">
       <div className="resume-container">
@@ -16,172 +91,140 @@ const Resume = () => {
         <div className="resume-content">
           
           {/* Personal Info */}
-          <div className="personal-info">
-            <h1 className="full-name">Arial Rosario</h1>
-            <h2 className="professional-title">International Relations Specialist</h2>
-            
-            <div className="contact-info">
-              <div className="contact-item">
-                <Mail size={16} />
-                <span>arial.rosario@example.com</span>
-              </div>
-              <div className="contact-item">
-                <Phone size={16} />
-                <span>+1 (919) 396-2209</span>
-              </div>
-              <div className="contact-item">
-                <MapPin size={16} />
-                <span>San Diego, California, USA</span>
+          {personalInfo && (
+            <div className="personal-info">
+              <h1 className="full-name">{personalInfo.full_name}</h1>
+              <h2 className="professional-title">{personalInfo.professional_title}</h2>
+              
+              <div className="contact-info">
+                {personalInfo.email && (
+                  <div className="contact-item">
+                    <Mail size={16} />
+                    <span>{personalInfo.email}</span>
+                  </div>
+                )}
+                {personalInfo.phone && (
+                  <div className="contact-item">
+                    <Phone size={16} />
+                    <span>{personalInfo.phone}</span>
+                  </div>
+                )}
+                {personalInfo.location && (
+                  <div className="contact-item">
+                    <MapPin size={16} />
+                    <span>{personalInfo.location}</span>
+                  </div>
+                )}
+                {personalInfo.linkedin_url && (
+                  <div className="contact-item">
+                    <Linkedin size={16} />
+                    <a href={personalInfo.linkedin_url} target="_blank" rel="noopener noreferrer">
+                      LinkedIn Profile
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
-          </div>
+          )}
 
           {/* Education */}
-          <section className="resume-section">
-            <h3 className="section-title">Education</h3>
-            
-            <div className="education-item">
-              <div className="education-header">
-                <div className="education-details">
-                  <h4 className="degree-title">Master of International Affairs</h4>
-                  <p className="institution">School of Global Policy and Strategy (GPS), UC San Diego</p>
+          {education.length > 0 && (
+            <section className="resume-section">
+              <h3 className="section-title">Education</h3>
+              
+              {education.map((edu) => (
+                <div key={edu.id} className="education-item">
+                  <div className="education-header">
+                    <div className="education-details">
+                      <h4 className="degree-title">{edu.degree_title}</h4>
+                      <p className="institution">{edu.institution}</p>
+                      {edu.location && <p className="location-text">{edu.location}</p>}
+                    </div>
+                    {(edu.start_date || edu.end_date) && (
+                      <span className="date-range">
+                        <Calendar size={14} />
+                        {edu.start_date && edu.end_date ? `${edu.start_date} - ${edu.end_date}` : edu.end_date || edu.start_date}
+                      </span>
+                    )}
+                  </div>
+                  {edu.specialization && (
+                    <p className="specialization">{edu.specialization}</p>
+                  )}
                 </div>
-                <span className="date-range">
-                  <Calendar size={14} />
-                  2024 - Present
-                </span>
-              </div>
-              <p className="specialization">Focusing on international cooperation, policy analysis, and cross-cultural engagement</p>
-            </div>
-
-            <div className="education-item">
-              <div className="education-header">
-                <div className="education-details">
-                  <h4 className="degree-title">Bachelor of Arts in International Relations</h4>
-                  <p className="institution">[University Name]</p>
-                </div>
-                <span className="date-range">
-                  <Calendar size={14} />
-                  2018 - 2022
-                </span>
-              </div>
-              <p className="specialization">Specialization: Global Affairs and Diplomacy</p>
-            </div>
-          </section>
+              ))}
+            </section>
+          )}
 
           {/* Experience */}
-          <section className="resume-section">
-            <h3 className="section-title">Professional Experience</h3>
-            
-            <div className="experience-item">
-              <div className="experience-header">
-                <div className="experience-details">
-                  <h4 className="position-title">International Relations Analyst</h4>
-                  <p className="company">[Organization Name]</p>
+          {experience.length > 0 && (
+            <section className="resume-section">
+              <h3 className="section-title">Professional Experience</h3>
+              
+              {experience.map((exp) => (
+                <div key={exp.id} className="experience-item">
+                  <div className="experience-header">
+                    <div className="experience-details">
+                      <h4 className="position-title">{exp.position_title}</h4>
+                      <p className="company">{exp.company}{exp.location && `, ${exp.location}`}</p>
+                    </div>
+                    {(exp.start_date || exp.end_date) && (
+                      <span className="date-range">
+                        <Calendar size={14} />
+                        {exp.start_date && exp.end_date ? `${exp.start_date} - ${exp.end_date}` : exp.end_date || exp.start_date}
+                      </span>
+                    )}
+                  </div>
+                  {exp.description && (
+                    <p className="job-description-text">{exp.description}</p>
+                  )}
+                  {exp.responsibilities && exp.responsibilities.length > 0 && (
+                    <div className="job-description">
+                      <ul className="job-responsibilities">
+                        {exp.responsibilities.map((resp, index) => (
+                          <li key={index}>{resp}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
-                <span className="date-range">
-                  <Calendar size={14} />
-                  2022 - 2024
-                </span>
-              </div>
-              <div className="job-description">
-                <ul className="job-responsibilities">
-                  <li>
-                    <strong>Policy Analysis:</strong> Conducted comprehensive research and analysis on international policy initiatives, 
-                    supporting strategic decision-making and stakeholder engagement.
-                  </li>
-                  <li>
-                    <strong>Cross-Cultural Communication:</strong> Facilitated diplomatic exchanges and built relationships with international 
-                    partners across 8+ countries, enhancing collaborative efforts.
-                  </li>
-                  <li>
-                    <strong>Project Management:</strong> Coordinated multiple international cooperation projects, ensuring timely delivery 
-                    and alignment with organizational goals and partner expectations.
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="experience-item">
-              <div className="experience-header">
-                <div className="experience-details">
-                  <h4 className="position-title">Travel Writer & Content Creator</h4>
-                  <p className="company">Personal Blog & Publications</p>
-                </div>
-                <span className="date-range">
-                  <Calendar size={14} />
-                  2020 - Present
-                </span>
-              </div>
-              <div className="job-description">
-                <ul className="job-responsibilities">
-                  <li>
-                    <strong>Cultural Storytelling:</strong> Document authentic travel experiences and local stories from diverse global 
-                    communities, promoting cross-cultural understanding through engaging narratives.
-                  </li>
-                  <li>
-                    <strong>Content Development:</strong> Create compelling written and visual content that highlights cultural diversity, 
-                    local perspectives, and human-centered stories from around the world.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </section>
+              ))}
+            </section>
+          )}
 
           {/* Skills */}
-          <section className="resume-section">
-            <h3 className="section-title">Core Competencies</h3>
-            
-            <div className="skills-grid">
-              <div className="skill-category">
-                <h4 className="skill-category-title">Policy & Analysis</h4>
-                <p className="skill-list">International Policy Analysis, Strategic Planning, Research & Writing</p>
+          {skills.length > 0 && (
+            <section className="resume-section">
+              <h3 className="section-title">Additional Skills & Qualifications</h3>
+              
+              <div className="skills-grid">
+                {skills.map((skill) => (
+                  <div key={skill.id} className="skill-category">
+                    <h4 className="skill-category-title">{skill.category}</h4>
+                    <p className="skill-list">{skill.skills}</p>
+                  </div>
+                ))}
               </div>
-              <div className="skill-category">
-                <h4 className="skill-category-title">Diplomacy & Communication</h4>
-                <p className="skill-list">Cross-Cultural Relations, Stakeholder Engagement, Diplomatic Communication</p>
-              </div>
-              <div className="skill-category">
-                <h4 className="skill-category-title">Languages</h4>
-                <p className="skill-list">English (Native), Spanish (Proficient), [Other Languages]</p>
-              </div>
-              <div className="skill-category">
-                <h4 className="skill-category-title">Content Creation</h4>
-                <p className="skill-list">Travel Writing, Cultural Storytelling, Digital Media, Blog Management</p>
-              </div>
-            </div>
-          </section>
+            </section>
+          )}
 
           {/* Areas of Interest */}
-          <section className="resume-section">
-            <h3 className="section-title">Areas of Interest</h3>
-            <div className="research-interests">
-              <span className="research-tag">International Cooperation</span>
-              <span className="research-tag">Diplomatic Relations</span>
-              <span className="research-tag">Cultural Exchange</span>
-              <span className="research-tag">Policy Development</span>
-              <span className="research-tag">Global Affairs</span>
-              <span className="research-tag">Travel & Cultural Storytelling</span>
-              <span className="research-tag">Sustainable Development</span>
-              <span className="research-tag">Human Rights</span>
-            </div>
-          </section>
-
-          {/* Note */}
-          <section className="resume-section">
-            <div className="resume-note">
-              <p style={{ fontStyle: 'italic', color: '#666', textAlign: 'center' }}>
-                Detailed resume with full professional history available upon request
-              </p>
-            </div>
-          </section>
+          {interests.length > 0 && (
+            <section className="resume-section">
+              <h3 className="section-title">Areas of Interest</h3>
+              <div className="research-interests">
+                {interests.map((interest) => (
+                  <span key={interest.id} className="research-tag">{interest.interest}</span>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
 
         {/* Download Button */}
         <div className="download-section">
           <button 
             className="download-btn"
-            onClick={() => alert('Full resume download coming soon!')}
+            onClick={handleDownload}
           >
             <Download size={20} />
             Download Full Resume (PDF)

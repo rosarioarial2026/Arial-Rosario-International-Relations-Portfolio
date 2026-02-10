@@ -1,5 +1,5 @@
 // src/pages/Home.js
-// Arial Rosario - International Relations Portfolio
+// Ariel Rosario - International Relations Portfolio
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, Globe, TrendingUp, Users, Download, Eye } from 'lucide-react';
@@ -38,30 +38,27 @@ const Home = () => {
   };
 
   const skills = [
-    { name: 'Policy Analysis', level: 90, color: '#6366f1' },
-    { name: 'Diplomatic Communication', level: 88, color: '#8b5cf6' },
-    { name: 'International Law', level: 85, color: '#ec4899' },
-    { name: 'Travel Blogging', level: 93, color: '#f59e0b' },
-    { name: 'Cross-Cultural Relations', level: 95, color: '#10b981' },
-    { name: 'Storytelling & Writing', level: 92, color: '#3b82f6' }
+    { name: 'Policy Analysis', level: 90, color: '#3d5a80' },        // Navy
+    { name: 'Diplomatic Communication', level: 88, color: '#2a9d8f' }, // Teal
+    { name: 'International Law', level: 85, color: '#a8dadc' },       // Seafoam
+    { name: 'Travel Blogging', level: 93, color: '#f4a261' },         // Tangerine
+    { name: 'Cross-Cultural Relations', level: 95, color: '#2a9d8f' }, // Teal
+    { name: 'Storytelling & Writing', level: 92, color: '#e9c46a' }   // Sand
   ];
 
   const stats = [
     { label: 'Years Experience', value: '3+', icon: TrendingUp },
-    { label: 'Projects Completed', value: '15+', icon: BookOpen },
-    { label: 'Countries Worked', value: '8+', icon: Globe },
-    { label: 'Stakeholder Relations', value: '50+', icon: Users }
+    { label: 'Projects Completed', value: '10+', icon: BookOpen },
+    { label: 'Countries Worked', value: '5+', icon: Globe },
+    { label: 'Stakeholder Relations', value: '10+', icon: Users }
   ];
 
   return (
     <div 
       className="home"
       style={{
-        // OPTION 1: Teal gradient (currently active)
-        //background: 'linear-gradient(135deg, #3b9c9c 0%, #5bb5b5 50%, #7dcdcd 100%)',
-        
-        // OPTION 2: Your background image (uncomment to use)
-        backgroundImage: 'url(/images/background.png)',
+        // Background image
+        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(/images/background.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
@@ -76,7 +73,7 @@ const Home = () => {
               <div className="profile-photo">
                 <img 
                   src="/images/profile.jpg" 
-                  alt="Arial Rosario - International Relations Specialist"
+                  alt="Ariel Rosario -  International Relations & Global Environmental Governance"
                   className="profile-image"
                   onError={(e) => {
                     // Hide image if not found
@@ -89,14 +86,15 @@ const Home = () => {
             <div className="hero-text-section">
               <div className="hero-text">
                 <h1 className="hero-title">
-                  <span className="hero-name">Arial Rosario</span>
-                  <span className="hero-role">International Relations Specialist</span>
+                  <span className="hero-name">Ariel Rosario</span>
+                  <span className="hero-role"> International Relations & Global Environmental Governance</span>
                 </h1>
                 <p className="hero-description">
-                  Passionate about global diplomacy and international cooperation with 3 years of 
-                  experience in policy analysis, stakeholder engagement, and cross-cultural communication. 
-                  I love traveling around the world and telling people's stories through engaging blogs, 
-                  bridging cultures and fostering understanding through authentic narratives.
+                  Works at the intersection of global politics, governance, and lived experience. 
+                  Focuses on how international policy and development decisions shape real communities, 
+                  particularly in contexts marked by inequality, environmental pressure, and weak institutions. 
+                  Through field-based research, writing, and narrative analysis, challenges top-down approaches 
+                  and centers the voices most often left out of global decision-making.
                 </p>
                 <div className="hero-actions">
                   <Link to="/articles" className="btn btn-primary">

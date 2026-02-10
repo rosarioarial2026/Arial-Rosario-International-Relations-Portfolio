@@ -18,6 +18,7 @@ import Login from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
 import BlogEditor from './pages/BlogEditor';
 import ResearchEditor from './pages/ResearchEditor';
+import ResumeEditor from './pages/ResumeEditor';
 
 import './App.css';
 
@@ -67,6 +68,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <ResearchEditor />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/resume/edit"
+            element={
+              <ProtectedRoute>
+                <ResumeEditor />
               </ProtectedRoute>
             }
           />

@@ -61,13 +61,13 @@ p {
 }
 
 a {
-  color: #2c5282;
+  color: #3d5a80;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 a:hover {
-  color: #2a4a7a;
+  color: #2c4360;
 }
 
 /* Buttons - Minimalist Professional */
@@ -87,21 +87,21 @@ a:hover {
 }
 
 .btn-primary {
-  background: #2c5282;
+  background: #3d5a80;
   color: white;
-  border-color: #2c5282;
+  border-color: #3d5a80;
 }
 
 .btn-primary:hover {
-  background: #2a4a7a;
+  background: #2c4360;
   transform: translateY(-1px);
   box-shadow: 0 2px 8px rgba(44, 82, 130, 0.15);
 }
 
 .btn-secondary {
   background: transparent;
-  color: #2c5282;
-  border-color: #2c5282;
+  color: #3d5a80;
+  border-color: #3d5a80;
 }
 
 .btn-secondary:hover {
@@ -116,8 +116,8 @@ a:hover {
 
 .btn-outline:hover {
   background: #f7fafc;
-  border-color: #2c5282;
-  color: #2c5282;
+  border-color: #3d5a80;
+  color: #3d5a80;
 }
 
 /* Form Elements */

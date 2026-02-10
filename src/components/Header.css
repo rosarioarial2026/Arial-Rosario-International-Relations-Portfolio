@@ -1,8 +1,8 @@
-/* Header.css - Professional-Casual styling for Arial Rosario with Auth */
+/* Header.css - Updated Colors for Ariel Rosario */
 
+/* Header - Main bars: Sand */
 .header {
-  /* Professional-casual gradient instead of solid blue */
-  background: linear-gradient(135deg, #3b9c9c 0%, #5bb5b5 50%, #7dcdcd 100%);
+  background: #d8c28c; /* Sand */
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
   position: sticky;
   top: 0;
@@ -78,12 +78,12 @@
 }
 
 .nav-link:hover {
-  border-bottom-color: white;
+  border-bottom-color: #f4a261; /* Tangerine */
   transform: translateY(-1px);
 }
 
 .nav-link.active {
-  border-bottom-color: white;
+  border-bottom-color: #f4a261; /* Tangerine */
   font-weight: 600;
 }
 
@@ -116,15 +116,14 @@
 }
 
 .signin-btn {
-  background: white;
-  color: #3b9c9c;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: #3b9c9c; /* Teal */
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .signin-btn:hover {
-  background: rgba(255, 255, 255, 0.95);
+  background: #2f7f7f; /* Darker Teal */
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .logout-btn {
@@ -135,7 +134,7 @@
 
 .logout-btn:hover {
   background: white;
-  color: #3b9c9c;
+  color: #3b9c9c; /* Teal */
   transform: translateY(-2px);
 }
 
@@ -193,11 +192,11 @@
 }
 
 .nav-mobile .nav-link:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(244, 162, 97, 0.2); /* Tangerine hover */
 }
 
 .nav-mobile .nav-link.active {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(244, 162, 97, 0.3); /* Tangerine active */
 }
 
 /* Mobile Auth Section */

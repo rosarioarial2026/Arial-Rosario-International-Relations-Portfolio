@@ -93,7 +93,7 @@
 
 /* Override for research editor header */
 .research-editor .editor-header {
-  background: linear-gradient(135deg, #3b9c9c 0%, #5bb5b5 100%);
+  background: linear-gradient(135deg, #2a9d8f 0%, #a8dadc 100%);
   color: white;
   padding: 1.5rem 2rem;
   display: flex;

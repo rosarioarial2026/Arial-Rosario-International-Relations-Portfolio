@@ -62,7 +62,7 @@
 }
 
 .search-input-group:focus-within {
-  border-color: #667eea;
+  border-color: #2a9d8f;
 }
 
 .search-icon {
@@ -80,7 +80,7 @@
 }
 
 .search-btn {
-  background: #667eea;
+  background: #2a9d8f;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -91,7 +91,7 @@
 }
 
 .search-btn:hover {
-  background: #5a6fd8;
+  background: #238276;
 }
 
 .filters {
@@ -123,7 +123,7 @@
 
 .filter-select:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #2a9d8f;
 }
 
 .clear-filters {
@@ -188,6 +188,7 @@
 }
 
 .article-type {
+  background: #2a9d8f;  /* Teal */
   color: white;
   padding: 0.35rem 0.75rem;
   border-radius: 12px;
@@ -235,14 +236,14 @@
 }
 
 .article-title a:hover {
-  color: #667eea;
+  color: #2a9d8f;
 }
 
 .article-authors {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #667eea;
+  color: #2a9d8f;
   font-weight: 500;
   margin-bottom: 0.5rem;
 }
@@ -277,8 +278,8 @@
 }
 
 .tag {
-  background: #e8f4f8;
-  color: #667eea;
+  background: #d4f1f4;
+  color: #2a9d8f;
   padding: 0.25rem 0.6rem;
   border-radius: 12px;
   font-size: 0.75rem;
@@ -312,14 +313,14 @@
   width: 40px;
   height: 40px;
   border: 3px solid #f3f3f3;
-  border-top: 3px solid #667eea;
+  border-top: 3px solid #2a9d8f;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 1rem;
 }
 
 .retry-btn {
-  background: #667eea;
+  background: #2a9d8f;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -331,7 +332,7 @@
 }
 
 .retry-btn:hover {
-  background: #5a6fd8;
+  background: #238276;
 }
 
 .empty-state h3 {
@@ -356,7 +357,7 @@
 
 .pagination-btn {
   background: white;
-  color: #667eea;
+  color: #2a9d8f;
   border: 1px solid #dee2e6;
   padding: 0.75rem 1rem;
   border-radius: 6px;
@@ -366,7 +367,7 @@
 }
 
 .pagination-btn:hover:not(:disabled) {
-  background: #667eea;
+  background: #2a9d8f;
   color: white;
 }
 
@@ -382,7 +383,7 @@
 
 .pagination-number {
   background: white;
-  color: #667eea;
+  color: #2a9d8f;
   border: 1px solid #dee2e6;
   padding: 0.75rem 1rem;
   border-radius: 6px;
@@ -397,9 +398,9 @@
 }
 
 .pagination-number.active {
-  background: #667eea;
+  background: #2a9d8f;
   color: white;
-  border-color: #667eea;
+  border-color: #2a9d8f;
 }
 
 /* Animations */

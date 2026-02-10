@@ -1,6 +1,6 @@
-/* Footer Styles - Professional Teal Theme */
+/* Footer Styles - Sand Theme */
 .footer {
-  background: linear-gradient(135deg, #3b9c9c 0%, #5bb5b5 50%, #7dcdcd 100%);
+  background: #d6c38c; /* Sand */
   color: white;
   padding: 3rem 0 1.5rem;
   margin-top: auto;
@@ -55,11 +55,11 @@
 
 .footer-links li {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: #f4a261; /* Tangerine for bottom links */
 }
 
 .footer-links a {
-  color: rgba(255, 255, 255, 0.9);
+  color: #f4a261; /* Tangerine */
   text-decoration: none;
   transition: all 0.2s ease;
   padding: 0.25rem 0;
@@ -71,6 +71,14 @@
   color: white;
   transform: translateX(4px);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Active View Projects Link */
+.footer-links a.active {
+  background-color: #d9f6d4; /* Seafoam for current main bar */
+  color: #000; /* Dark text for contrast */
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
 }
 
 /* Social Links */

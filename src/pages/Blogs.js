@@ -161,7 +161,7 @@ const Blogs = () => {
                     </span>
                     <span className="meta-item">
                       <User size={14} />
-                      {blog.author || 'Arial Rosario'}
+                      {blog.author || 'Ariel Rosario'}
                     </span>
                   </div>
 
