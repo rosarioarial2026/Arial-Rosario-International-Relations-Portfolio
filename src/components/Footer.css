@@ -55,11 +55,11 @@
 
 .footer-links li {
   font-size: 0.9rem;
-  color: #f4a261; /* Tangerine for bottom links */
+  color: rgba(255, 255, 255, 0.95); /* White like About section */
 }
 
 .footer-links a {
-  color: #f4a261; /* Tangerine */
+  color: rgba(255, 255, 255, 0.95); /* White like About section */
   text-decoration: none;
   transition: all 0.2s ease;
   padding: 0.25rem 0;
