@@ -1,7 +1,7 @@
 // src/pages/AdminDashboard.js - Delete-only comments (no approval)
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Plus, Edit, Trash2, Eye, LogOut, MessageSquare, FileText } from 'lucide-react';
+import { Plus, Edit, Trash2, Eye, LogOut, FileText } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import './AdminDashboard.css';
 
@@ -13,6 +13,7 @@ const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('blogs'); // 'blogs', 'research', 'comments', or 'resume'
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     checkAuth();
     loadData();
