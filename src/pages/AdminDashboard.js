@@ -207,7 +207,7 @@ const AdminDashboard = () => {
           className={`tab ${activeTab === 'research' ? 'active' : ''}`}
           onClick={() => setActiveTab('research')}
         >
-          Research Articles ({articles.length})
+          Research ({articles.length})
         </button>
         <button
           className={`tab ${activeTab === 'comments' ? 'active' : ''}`}
@@ -301,10 +301,10 @@ const AdminDashboard = () => {
         {activeTab === 'research' && (
           <div className="blogs-section">
             <div className="section-header">
-              <h2>Research Articles</h2>
+              <h2>Research</h2>
               <Link to="/admin/research/new" className="btn btn-primary">
                 <Plus size={20} />
-                New Research Article
+                New Research
               </Link>
             </div>
             <div className="blogs-table">
