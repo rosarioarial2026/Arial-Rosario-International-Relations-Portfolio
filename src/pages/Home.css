@@ -518,9 +518,9 @@
 }
 
 /* Call to Action Section - Minimal Navy */
-/* CTA Section - Teal Gradient Theme */
+/* CTA Section - Sand Theme */
 .cta-section {
-  background: linear-gradient(135deg, #2a9d8f 0%, #a8dadc 100%);
+  background: #d6c38c; /* Sand color to match footer */
   padding: 5rem 2rem;
   margin-top: 4rem;
   position: relative;
@@ -550,7 +550,7 @@
 .cta-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: white;
+  color: white; /* Keep white for readability on sand */
   margin-bottom: 1rem;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -585,13 +585,13 @@
 }
 
 .btn-primary {
-  background: white;
-  color: #2a9d8f;
+  background: #3d5a80; /* Navy blue to match site theme */
+  color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .btn-primary:hover {
-  background: rgba(255, 255, 255, 0.95);
+  background: #2c4360; /* Darker navy on hover */
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
@@ -604,7 +604,7 @@
 
 .btn-outline:hover {
   background: white;
-  color: #2a9d8f;
+  color: #3d5a80; /* Navy on hover */
   transform: translateY(-2px);
 }
 
