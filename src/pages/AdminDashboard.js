@@ -36,8 +36,9 @@ const AdminDashboard = () => {
     try {
       const { data, error } = await supabase
         .from('blogs')
-        .select('*')
-        .order('created_at', { ascending: false });
+        .select('id, title, slug, published, views, created_at, category')
+        .order('created_at', { ascending: false })
+        .limit(100);
 
       if (error) throw error;
       setBlogs(data || []);
