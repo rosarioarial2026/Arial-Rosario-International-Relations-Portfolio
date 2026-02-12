@@ -34,9 +34,10 @@ const Blogs = () => {
       setLoading(true);
       const { data, error } = await supabase
         .from('blogs')
-        .select('*')
+        .select('id, title, slug, excerpt, cover_image, category, tags, author, created_at')
         .eq('published', true)
-        .order('created_at', { ascending: false });
+        .order('created_at', { ascending: false })
+        .limit(50);
 
       if (error) throw error;
       setBlogs(data || []);
