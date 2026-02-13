@@ -65,7 +65,7 @@ const Header = () => {
             <span className="logo-icon">🌍</span>
             <div className="logo-text">
               <h1>Ariel Rosario</h1>
-              <p>International Relations Specialist</p>
+              <p>Oceans, Data & Global Change</p>
             </div>
           </Link>
 

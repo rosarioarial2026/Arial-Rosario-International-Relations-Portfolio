@@ -2,7 +2,7 @@
 // Ariel Rosario - International Relations Portfolio
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, BookOpen, Globe, TrendingUp, Users, Download, Eye } from 'lucide-react';
+import { ArrowRight, BookOpen, Globe, Download, Eye } from 'lucide-react';
 import { articlesAPI } from '../lib/supabase';
 import './Home.css';
 
@@ -45,26 +45,18 @@ const Home = () => {
     { name: 'Cross-Cultural Relations', level: 95, color: '#2a9d8f' }, // Teal
     { name: 'Storytelling & Writing', level: 92, color: '#e9c46a' }   // Sand
   ];
-
-  const stats = [
-    { label: 'Years Experience', value: '3+', icon: TrendingUp },
-    { label: 'Projects Completed', value: '10+', icon: BookOpen },
-    { label: 'Countries Worked', value: '5+', icon: Globe },
-    { label: 'Stakeholder Relations', value: '10+', icon: Users }
-  ];
-
   return (
-    <div 
-      className="home"
-      style={{
-        // Background image
-        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(/images/background.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        backgroundRepeat: 'no-repeat',
-      }}
-    >
+  <div 
+    className="home"
+    style={{
+      // Background image
+      backgroundImage: 'url(/images/background.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundAttachment: 'fixed',
+      backgroundRepeat: 'no-repeat',
+    }}
+  >
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-container">
@@ -73,7 +65,7 @@ const Home = () => {
               <div className="profile-photo">
                 <img 
                   src="/images/profile.jpg" 
-                  alt="Ariel Rosario -  International Relations & Global Environmental Governance"
+                  alt="Ariel Rosario - Marine Conservation, Data & Field-Based Research"
                   className="profile-image"
                   onError={(e) => {
                     // Hide image if not found
@@ -90,11 +82,11 @@ const Home = () => {
                   <span className="hero-role"> International Relations & Global Environmental Governance</span>
                 </h1>
                 <p className="hero-description">
-                  Works at the intersection of global politics, governance, and lived experience. 
-                  Focuses on how international policy and development decisions shape real communities, 
-                  particularly in contexts marked by inequality, environmental pressure, and weak institutions. 
-                  Through field-based research, writing, and narrative analysis, challenges top-down approaches 
-                  and centers the voices most often left out of global decision-making.
+                  Works at the intersection of marine conservation, environmental governance, and applied data. 
+                  Draws on coding, spatial analysis, and field research to explore how global environmental 
+                  change is experienced in coastal and marine systems across different places. Interested in 
+                  connecting large-scale patterns with on-the-ground realities, and in work that moves across 
+                  regions, disciplines, and ways of knowing.
                 </p>
                 <div className="hero-actions">
                   <Link to="/articles" className="btn btn-primary">
@@ -106,18 +98,6 @@ const Home = () => {
                     See Experience
                   </Link>
                 </div>
-              </div>
-              
-              <div className="hero-stats">
-                {stats.map((stat, index) => {
-                  const Icon = stat.icon;
-                  return (
-                    <div key={stat.label} className="stat-item" style={{ animationDelay: `${index * 0.1}s` }}>
-                      <div className="stat-value">{stat.value}</div>
-                      <div className="stat-label">{stat.label}</div>
-                    </div>
-                  );
-                })}
               </div>
             </div>
           </div>

@@ -7,7 +7,6 @@ import { articlesAPI } from '../lib/supabase';
 import './ArticleDetail.css';
 
 const ArticleDetail = () => {
-  // FIX: Changed from 'id' to 'slug' to match App.js route
   const { slug } = useParams();
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -16,7 +15,6 @@ const ArticleDetail = () => {
   useEffect(() => {
     const fetchArticle = async () => {
       try {
-        // Use Supabase to fetch article by slug
         const data = await articlesAPI.getBySlug(slug);
         setArticle(data);
       } catch (err) {
@@ -88,6 +86,13 @@ const ArticleDetail = () => {
             Back to Articles
           </Link>
         </div>
+
+        {/* Cover Image */}
+        {article.cover_image && (
+          <div className="article-detail-cover">
+            <img src={article.cover_image} alt={article.title} />
+          </div>
+        )}
 
         {/* Article Header */}
         <div className="article-header">
@@ -163,7 +168,7 @@ const ArticleDetail = () => {
             
             <div className="full-paper-buttons">
               {article.publication?.url && (
-                <a
+                
                   href={article.publication.url}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -175,7 +180,7 @@ const ArticleDetail = () => {
               )}
               
               {article.publication?.doi && (
-                <a
+                
                   href={`https://doi.org/${article.publication.doi}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -187,7 +192,7 @@ const ArticleDetail = () => {
               )}
 
               {article.links?.map((link, index) => (
-                <a
+                
                   key={index}
                   href={link.url}
                   target="_blank"
@@ -211,7 +216,10 @@ const ArticleDetail = () => {
           {/* Abstract */}
           <div className="article-section">
             <h2>Abstract</h2>
-            <p className="article-abstract">{article.abstract}</p>
+            <div 
+              className="article-abstract"
+              dangerouslySetInnerHTML={{ __html: article.abstract }}
+            />
           </div>
 
           {/* Tags */}
@@ -238,13 +246,13 @@ const ArticleDetail = () => {
             </div>
           )}
 
-          {/* Additional Resources (kept for completeness) */}
+          {/* Additional Resources */}
           {(article.publication?.url || article.publication?.doi || (article.links && article.links.length > 0)) && (
             <div className="article-section additional-resources">
               <h2>Additional Resources</h2>
               <div className="article-links">
                 {article.publication?.url && (
-                  <a
+                  
                     href={article.publication.url}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -256,7 +264,7 @@ const ArticleDetail = () => {
                 )}
                 
                 {article.publication?.doi && (
-                  <a
+                  
                     href={`https://doi.org/${article.publication.doi}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -268,7 +276,7 @@ const ArticleDetail = () => {
                 )}
 
                 {article.links?.map((link, index) => (
-                  <a
+                  
                     key={index}
                     href={link.url}
                     target="_blank"

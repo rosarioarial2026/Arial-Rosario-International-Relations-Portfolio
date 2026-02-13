@@ -13,7 +13,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.90); /* 90% white - adjust as needed */
+  background: rgba(255, 255, 255, 0.60); /* 60% white - adjust as needed */
   z-index: 0;
   pointer-events: none;
 }
@@ -106,26 +106,40 @@
 
 .hero-name {
   font-size: 3.5rem;
-  font-weight: 400; /* Slightly bolder than 300 */
-  color: #1a202c; /* Dark gray/black for maximum contrast */
+  font-weight: 600;
+  color: #000000; /* Pure black */
   line-height: 1.1;
   letter-spacing: -0.02em;
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.9),
+    0 0 20px rgba(255, 255, 255, 0.8),
+    2px 2px 4px rgba(255, 255, 255, 0.9),
+    0 0 30px rgba(255, 255, 255, 0.7);
 }
 
 .hero-role {
   font-size: 1.4rem;
-  font-weight: 600; /* Even bolder */
-  color: #1e3a8a; /* Darker navy for better contrast */
+  font-weight: 600;
+  color: #0a1e3d; /* Very dark navy */
   margin-top: 0.5rem;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for extra contrast */
+  text-shadow: 
+    0 0 8px rgba(255, 255, 255, 0.9),
+    0 0 16px rgba(255, 255, 255, 0.8),
+    1px 1px 3px rgba(255, 255, 255, 0.9),
+    0 0 24px rgba(255, 255, 255, 0.7);
 }
 
 .hero-description {
   font-size: 1.1rem;
   line-height: 1.7;
-  color: #4a5568;
+  color: #1a1a1a; /* Almost black */
   max-width: 600px;
-  font-weight: 400;
+  font-weight: 500;
+  text-shadow: 
+    0 0 6px rgba(255, 255, 255, 0.95),
+    0 0 12px rgba(255, 255, 255, 0.85),
+    1px 1px 2px rgba(255, 255, 255, 0.9),
+    0 0 18px rgba(255, 255, 255, 0.75);
 }
 
 .hero-actions {

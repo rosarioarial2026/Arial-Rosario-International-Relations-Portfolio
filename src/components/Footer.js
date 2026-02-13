@@ -40,8 +40,8 @@ const Footer = () => {
           <div className="footer-section">
             <h3 className="footer-title">About</h3>
             <p className="footer-text">
-              International Relations Specialist passionate about global diplomacy, 
-              cross-cultural communication, and telling authentic stories from around the world.
+              An environmental data researcher focused on marine conservation and global change. 
+              Uses coding, spatial analysis, and fieldwork to explore how oceans, people, and policy intersect across places.
             </p>
           </div>
 

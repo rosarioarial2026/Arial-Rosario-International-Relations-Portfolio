@@ -28,6 +28,7 @@ const ResearchEditor = () => {
     keywords: [],
     categories: [],
     tags: [],
+    cover_image: '',
     pdf_url: '',
     external_link: '',
     featured: false,
@@ -54,14 +55,25 @@ const ResearchEditor = () => {
   const modules = {
     toolbar: [
       [{ 'header': [1, 2, 3, false] }],
-      ['bold', 'italic', 'underline'],
+      ['bold', 'italic', 'underline', 'strike'],
       [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      ['link'],
+      [{ 'align': [] }],
+      ['link', 'image'],
+      ['blockquote', 'code-block'],
+      [{ 'color': [] }, { 'background': [] }],
       ['clean']
     ],
   };
 
-  const formats = ['header', 'bold', 'italic', 'underline', 'list', 'bullet', 'link'];
+  const formats = [
+    'header',
+    'bold', 'italic', 'underline', 'strike',
+    'list', 'bullet',
+    'align',
+    'link', 'image',
+    'blockquote', 'code-block',
+    'color', 'background'
+  ];
 
   useEffect(() => {
     if (isEditMode) {
@@ -227,6 +239,7 @@ const ResearchEditor = () => {
         keywords: formData.keywords,
         categories: formData.categories,
         tags: formData.tags,
+        cover_image: formData.cover_image || null,
         pdf_url: formData.pdf_url || null,
         external_link: formData.external_link || null,
         featured: formData.featured,
@@ -280,7 +293,7 @@ const ResearchEditor = () => {
           <ArrowLeft size={20} />
           Back to Dashboard
         </button>
-        <h1>{isEditMode ? 'Edit Research Article' : 'New Research Article'}</h1>
+        <h1>{isEditMode ? 'Edit Research Article' : 'Create New Research Article'}</h1>
         <div className="editor-actions">
           <button
             onClick={() => handleSave(false)}
@@ -391,6 +404,24 @@ const ResearchEditor = () => {
 
         {/* Sidebar */}
         <div className="editor-sidebar">
+          {/* Cover Image Section */}
+          <div className="sidebar-section">
+            <h3>Cover Image</h3>
+            <input
+              type="url"
+              name="cover_image"
+              value={formData.cover_image}
+              onChange={handleChange}
+              placeholder="https://example.com/image.jpg"
+              className="input-small"
+            />
+            {formData.cover_image && (
+              <div className="image-preview">
+                <img src={formData.cover_image} alt="Cover preview" />
+              </div>
+            )}
+          </div>
+
           {/* Article Type */}
           <div className="sidebar-section">
             <h3>Article Type *</h3>

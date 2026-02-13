@@ -1,6 +1,7 @@
 // src/pages/Articles.js
 // UPDATED: Supabase integration with research_articles table
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Search, Filter, ExternalLink, Github, Database, FileText, Eye, Download } from 'lucide-react';
 import { articlesAPI } from '../lib/supabase';
 import './Articles.css';
@@ -201,6 +202,13 @@ const Articles = () => {
           ) : (
             filteredArticles.map(article => (
               <article key={article.id} className="article-card">
+                {/* Cover Image */}
+                {article.cover_image && (
+                  <div className="article-cover">
+                    <img src={article.cover_image} alt={article.title} />
+                  </div>
+                )}
+
                 {/* Article Header */}
                 <div className="article-header">
                   <div className="article-meta">
@@ -228,9 +236,9 @@ const Articles = () => {
 
                 {/* Article Title */}
                 <h2 className="article-title">
-                  <a href={`/articles/${article.slug || article.id}`}>
+                  <Link to={`/articles/${article.slug || article.id}`}>
                     {article.title}
-                  </a>
+                  </Link>
                 </h2>
 
                 {/* Authors */}
@@ -276,9 +284,10 @@ const Articles = () => {
                 )}
 
                 {/* Abstract */}
-                <p className="article-abstract">
-                  {article.abstract}
-                </p>
+                <div 
+                  className="article-abstract"
+                  dangerouslySetInnerHTML={{ __html: article.abstract }}
+                />
 
                 {/* Links Section */}
                 <div className="article-links">

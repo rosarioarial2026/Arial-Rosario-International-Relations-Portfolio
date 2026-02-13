@@ -51,10 +51,12 @@
 
 .logo-text p {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 1rem; /* Increased from 0.85rem */
   color: white;
   opacity: 1;
-  font-weight: 300;
+  font-weight: 600; /* Increased from 300 to match nav links */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Added for clarity */
+  letter-spacing: 0.3px; /* Added for readability */
 }
 
 /* Desktop Navigation */
